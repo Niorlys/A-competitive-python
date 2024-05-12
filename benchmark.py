@@ -18,7 +18,8 @@ class Benchmark:
 
         This method runs each of the provided functions for a number of iterations
         set during the class initialization. It records the execution time for each
-        iteration and stores it in the results dictionary.
+        iteration and stores it in the results dictionary. At the end you will receive
+        an statistic report about the performance of the benchmarked functions.
 
         Parameters:
             functions (tuple): A tuple of functions to be benchmarked.
@@ -71,5 +72,5 @@ if __name__ == "__main__":
     def sum_n_numbers_using_sum_builtin(n):
         return sum(range(1,n+1))
 
-    bench = Benchmark()
-    bench.benchmark(sum_n_numbers_using_for, sum_n_numbers_using_sum_builtin , args=(100000,), kwargs={})
+    bench =Benchmark()
+    bench.benchmark(sum_n_numbers_using_for, sum_n_numbers_using_sum_builtin , args=(10000000,), kwargs={})
