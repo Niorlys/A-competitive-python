@@ -41,7 +41,8 @@ class Benchmark:
 
         self._report(results)
 
-    def _report(self, results:dict) -> None:
+    @staticmethod
+    def _report(results:dict) -> None:
         """
         Creates a report for the benchmarking results.
 
