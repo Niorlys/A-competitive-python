@@ -287,6 +287,3 @@ def binary_search():
     assert 5 == l[bisect(l,5)-1] # True
 
 # endregion Algorithms
-
-if __name__ == '__main__':
-    ...
