@@ -63,7 +63,7 @@ class Benchmark:
 
 
 if __name__ == "__main__":
-    # Usage example
+    # Example usage
     def sum_n_numbers_using_for(n):
         total = 0
         for i in range(1,n + 1):
