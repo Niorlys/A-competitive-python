@@ -1,4 +1,4 @@
-name: Python application
+name: Solutions Tests
 
 on:
   push:

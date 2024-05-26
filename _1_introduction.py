@@ -151,7 +151,6 @@ def usage_array():
     print("\nPop:",a.pop())
     
 def usage_heapq():
-    from util.binary_tree_view import print_tree
     """
     Heaps are containers with the min(max) heap property, this is  
     a[k] <= a[2*k+1] and a[k] <= a[2*k+2]( a[k] >= a[2*k+1] and a[k] >= a[2*k+2])
@@ -161,11 +160,11 @@ def usage_heapq():
     arr = [5,2,8,12,4,9,1]
     # Converting the array in a min heap
     heapify(arr)
-    print_tree(arr)
+    print(arr)
 
     print("Min element in O(1):",heappop(arr))
     heappush(arr,7) # Pushing 7
-    print_tree(arr)
+    print(arr)
 
     arr = [4,7,2,1,8,9,41,2]
     print("Sorted arr:", sorted(arr[:]))
@@ -287,3 +286,29 @@ def binary_search():
     assert 5 == l[bisect(l,5)-1] # True
 
 # endregion Algorithms
+
+
+
+
+
+# region Solutions Convention
+"""
+For each presented challenge, if we give a solution for and the challenge has name 'challenge_name', the solution
+is named using 'solution' as prefix, such that the name turns 'solution_challenge_name'.
+Example: 
+Tower of Hanoi: https://cses.fi/problemset/task/2165/
+"""
+def solution_tower_of_hanoi():
+    def move_discs(n,pp,pt,pv):
+        if n == 1:
+            print(pp, pt)
+            return
+        move_discs(n-1,pp,pv,pt)
+        print(pp,pt)
+        move_discs(n-1,pv,pt,pp)
+ 
+    case = int(input())
+    print(2**case-1)
+    move_discs(case,1,3,2)
+
+# endregion Solutions Convention

@@ -2,23 +2,30 @@ import os
 import sys
 import io
 from contextlib import redirect_stdout
+from typing import Generator, Any, Callable, Union
 
-class SolutionTestCases:
-    def __init__(self, problem_name, input_func, output_func, num_cases):
+class SolutionTestSession:
+    ALL_PASSED = 'All tests passed.'
+    SOME_FAILED = 'Some tests failed.'
+
+    def __init__(self, problem_name:str, 
+                 input_generator:Generator, 
+                 output_func:Union[Callable,Generator],
+                 output_func_generator:bool = False,
+                 ):
         """
-        Initializes the SolutionTestCases.
+        Initializes the SolutionTestSession.
 
         :param problem_name: The name of the problem (used for directory structure)
         :param input_func: A function to generate input data
-        :param output_func: A function to generate output data based on input data
-        :param num_cases: Number of test cases to generate
+        :param output_func: A function (maybe naive) to generate output data(correct solutions) based on input data.
+        :param output_func_generator: Does output_func returns a generator? 
         """
         self.problem_name = problem_name
-        self.input_func = input_func
+        self.input_generator = input_generator
         self.output_func = output_func
-        self.num_cases = num_cases
-
         self.base_dir = os.path.join('tests', 'testcases', problem_name)
+        self.output_func_generator = output_func_generator
 
         self.inputs_dir = os.path.join(self.base_dir, 'inputs')
         self.outputs_dir = os.path.join(self.base_dir, 'outputs')
@@ -30,30 +37,41 @@ class SolutionTestCases:
         """
         Generates test cases and writes them to files.
         """
-        for i in range(1, self.num_cases + 1):
-            input_data = self.input_func()
-            output_data = self.output_func(input_data)
+        output_func = self.output_func
+        if self.output_func_generator:
+            output_generator = self.output_func()
+            output_func = lambda *args: next(output_generator)
+        for i, input_data in enumerate(self.input_generator()):
+            i = i+1
 
             input_file_path = os.path.join(self.inputs_dir, f'input{i}.inp')
             output_file_path = os.path.join(self.outputs_dir, f'output{i}.out')
 
+            if os.path.exists(input_file_path) and os.path.exists(output_file_path):
+                continue
+
             with open(input_file_path, 'w') as input_file:
                 input_file.write(input_data)
             
+            output_data = output_func(input_data)
             with open(output_file_path, 'w') as output_file:
                 output_file.write(output_data)
 
             print(f'Generated test case {i}: {input_file_path}, {output_file_path}')
 
-    def test_solution(self, solution_func):
+    def test_solution(self, solution_func:Callable)->str:
         """
         Tests a given solution function against all generated test cases.
 
         :param solution_func: The solution function to be tested
         """
         all_passed = True
-        for i in range(1, self.num_cases + 1):
+        result = SolutionTestSession.ALL_PASSED
+        i = 1
+        while True:
             input_file_path = os.path.join(self.inputs_dir, f'input{i}.inp')
+            if not os.path.exists(input_file_path):
+                break
             output_file_path = os.path.join(self.outputs_dir, f'output{i}.out')
 
             with open(input_file_path, 'r') as input_file:
@@ -81,16 +99,20 @@ class SolutionTestCases:
                 print(f'Expected Output:\n{expected_output}')
                 print(f'Actual Output:\n{actual_output}')
                 all_passed = False
+            i = i+1
 
-        if all_passed:
-            print('All tests passed.')
-        else:
-            print('Some tests failed.')
+        if not all_passed:
+            result = SolutionTestSession.SOME_FAILED
+
+        print(result)
+        return result
 
 # Example usage:
 if __name__ == '__main__':
     def generate_input():
-        return "3\n1 2 3\n"
+        yield "3\n1 2 3\n"
+        yield "3\n1 2 3\n"
+        yield "3\n1 2 3\n"
 
     def generate_output(input_data):
         numbers = list(map(int, input_data.split()[1:]))
@@ -100,12 +122,12 @@ if __name__ == '__main__':
     def solution():
         n = int(input())
         arr = list(map(int, input().split()))
-        print(sum(arr))
+        print(sum(arr)-1)
 
-    test_case = SolutionTestCases('example_problem', generate_input, generate_output, 5)
+    session = SolutionTestSession('example_problem', generate_input, generate_output)
 
     # Generate test cases
-    test_case.generate_test_cases()
+    session.generate_test_cases()
 
     # Test the solution function
-    test_case.test_solution(solution)
+    session.test_solution(solution)
