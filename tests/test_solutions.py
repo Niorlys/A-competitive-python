@@ -4,9 +4,6 @@ from . import BaseTest
 from _2_sorting_searching import (
     solution_inversions,
     solution_intersected_intervals,
-    solution_concert_tickets,
-    solution_restaurant_customers,
-    solution_tasks_in_concurrent_machines,
 )
 
 class TestSortingSearching(BaseTest):
