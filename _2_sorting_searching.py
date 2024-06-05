@@ -317,3 +317,6 @@ def solution_concert_tickets():
  
 
 # endregion Search Algorithms
+
+if __name__ == '__main__':
+    ...

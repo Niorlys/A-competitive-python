@@ -1,4 +1,4 @@
-name: Python application
+name: Solutions Tests
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
+        pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Running Tests
       run: |
