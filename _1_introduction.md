@@ -1,22 +1,28 @@
 # Competitive Programming
-Competitive programming involves developing and utilizing algorithms to solve well-known computational problems in their various forms. Being well-versed in competitive programming can transform you into a well-rounded programmer, capable of creating superior software. It also fosters creativity in solving complex computer science problems that may emerge in future job scenarios. Additionally, competitive programming can be an enjoyable and intellectually stimulating activity. To excel in competitive programming, it's essential to be familiar with several key aspects, as outlined below.
 
-## Be familiar with...
+Competitive programming involves developing and utilizing algorithms to solve well-known computational problems in their various forms. Being well-versed in competitive programming can transform you into a well-rounded programmer, capable of creating superior software. It also fosters creativity in solving complex computer science problems that may emerge in future job scenarios. But what I love is that competitive programming can be an enjoyable and intellectually stimulating activity. To excel in competitive programming, it's essential to be familiar with several key aspects, as outlined below.
+
+## Be familiar with
+
 ### Be familiar with classic computer science data structure and algorithms
-Data structures provide a systematic way of organizing and managing data, enabling programmers to handle complex problems with more clarity and efficiency, and mastery of algorithms not only accelerates the problem-solving process but also enhances the ability to think algorithmically, leading to solutions that are not just functional but also optimized for speed and resource usage. Also, it is useful to do algorithm analysis to know if the time/space complexity of the developed algorithm passes the time/space limits of the problem, so it is good to be familiarized with asymptotic notation of functions. 
- 
- **Asymptotic notation and bounds** 
+
+Data structures provide a systematic way of organizing and managing data, enabling programmers to handle complex problems with more clarity and efficiency, and mastery of algorithms not only accelerates the problem-solving process but also enhances the ability to think algorithmically, leading to solutions that are not just functional but also optimized for speed and resource usage. Also, it is useful to do algorithm analysis to know if the time/space complexity of the developed algorithm passes the time/space limits of the problem, so it is good to be familiarized with asymptotic notation of functions.
+
+### Asymptotic notation and bounds
+
 * `f(n) = Ω(g(n))` if there exists positives `c` and `N` such that `f(n)>=cg(n)` for all `n>=N`.
 * `f(n) = O(g(n))` if there exists positives `c` and `N` such that `f(n)<=cg(n)` for all `n>=N`.
 * The best time for sorting algorithms requiring comparison is `Ω(n log2 n)`.
 * `2**10` is approx. `1K`, `2**20` is approx. `1M`.
-### Be acquainted with classic computer science problems no matter how hard they are.
+  
+### Be acquainted with classic computer science problems no matter how hard they are
 
 Tackling these problems enhances critical thinking and problem-solving abilities. It trains you to approach complex challenges methodically and creatively. The principles and techniques learned from these problems give you the confidence and expected solving speed when facing variations of these problems.
 
+## Python's Toolbox for competitive programming
 
-# Python's Toolbox for competitive programming
 Python's standard (CPython) library and built-ins come with a set of useful tools to save time and add speed to our scripts in problem-solving. Looking for speed and efficiency requires to use of the standard library as much as possible, since most of the time the tools are optimized using C extension modules, which run faster due to the compiled nature of C. If you check the code of some built-in library, likely will find a pattern like this:
+
 ```
 def _some_function(*args, **kwargs):
     ...
@@ -28,8 +34,8 @@ try:
 except:
     pass
 ```
-This is an example of Python's strategy to optimize performance utilizing C extensions where feasible, coupled with providing Python fallbacks to ensure broad compatibility and ease of use. This balanced approach melds Python's high-level user-friendliness with C's performance advantages. In general programming practice, avoiding reinventing the wheel is recommended for saving time and enhancing efficiency. 
- 
+
+This is an example of Python's strategy to optimize performance utilizing C extensions where feasible, coupled with providing Python fallbacks to ensure broad compatibility and ease of use. This balanced approach melds Python's high-level user-friendliness with C's performance advantages. In general programming practice, avoiding reinventing the wheel is recommended for saving time and enhancing efficiency.
 
 To illustrate the impact of this practice, consider the following example where we calculate the sum of the first `n` integers. Instead of using Gauss's formula, we opt for a more straightforward(and naive) approach. The purpose here is to demonstrate the significance of choosing optimal methods in Python. We use our implemented **benchmark.py** module to compare two functions that sum numbers iteratively for `n=10000`. The benchmark's report reveals the execution times of both methods:
 
@@ -38,11 +44,14 @@ Function                           Average     Median    Maximum    Minimum
 ---------------------------------------------------------------------------
 sum_n_numbers_using_for            0.00306    0.00294    0.00606    0.00268
 sum_n_numbers_using_sum_builtin    0.00080    0.00076    0.00137    0.00071
-``` 
-This comparison clearly shows that Python's built-in `sum` method is at least three times faster than a manually coded `for` loop for summing elements in an iterable. Such examples underscore the importance of using Python's built-in capabilities for more efficient programming. The module **introduction.py** briefly describes the data structures and algorithms included as standard programming. From here onward, each *.md* file will have an associated a *.py* script implementing the methods described, we'll refer to this script as **the script**. 
- 
- ## PyPy as a faster option
+```
+
+This comparison clearly shows that Python's built-in `sum` method is at least three times faster than a manually coded `for` loop for summing elements in an iterable. Such examples underscore the importance of using Python's built-in capabilities for more efficient programming. The module **introduction.py** briefly describes the data structures and algorithms included as standard programming. From here onward, each *.md* file will have an associated a *.py* script implementing the methods described, we'll refer to this script as **the script**.
+
+## PyPy as a faster option
+
  PyPy is an alternative Python interpreter with a focus on speed by featuring a **Just In Time** (JIT) compiler, which can significantly speed up the execution of Python code. The JIT compiler in Pypy optimizes the code in runtime identifying and enhancing the performance of frequently executed code. This means that loops, function calls, and mathematical operations can become much faster after the initial iterations. That is why PyPy is particularly effective for long-running programs that perform lots of computations or iterations. If you want to see the difference between CPython and PyPy, visit the [documentation](https://doc.pypy.org/en/latest/cpython_differences.html#). As an example of the performance difference, for the following problem in CodeForces: [The least round way](https://codeforces.com/contest/2/problem/B), submit the memomy optimized solution twice, one time using Python and the other time using PyPy3:
+
  ```
  from sys import stdin, stdout
 from array import array
