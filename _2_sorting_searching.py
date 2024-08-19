@@ -13,7 +13,7 @@ when solving a problem with input an array A of n elements:
 
 def quick_sort(arr):
     """
-    1- Dividing:Given a pivot, we partition the array in two sides such that l<=arr[p] for l in arr[:p+1] 
+    1- Dividing:Given a pivot p, we partition the array in two sides such that l<=arr[p] for l in arr[:p+1] 
        and r>arr[p] for r in arr[p+1:].
     2- Conquering: For the new subarrays, we apply recursively the same original routine.
     3- Combining: This step is not necessary (Why?)

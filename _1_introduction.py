@@ -120,10 +120,10 @@ def usage_deque():
 def usage_array():
     """
     Dealing with large amount of data requires an efficient memory usage. In such scenarios, arrays offer a more memory-efficient 
-    solution compared to lists, primarily due to the nature of their data storage. Since an array require all elements to be of a fixed type.
-    this constraint allows arrays to employ a more compact memory representation in contrast with a general purpose list. 
+    solution compared to lists, primarily due to the nature of their data storage. Since an array require all elements to be of a 
+    fixed type, this constraint allows arrays to employ a more compact memory representation in contrast with a general purpose list. 
 
-    Creating an aray requires a code for specifying the type, in summary:
+    Creating an array requires a code for specifying the type, in summary:
     
      Code	Type	    Minimum size (bytes)
         b	signed int	            1
@@ -293,7 +293,7 @@ def binary_search():
 
 # region Solutions Convention
 """
-For each presented challenge, if we give a solution for and the challenge has name 'challenge_name', the solution
+For each presented challenge, if we give a solution and the challenge has name 'Challenge Name', the solution
 is named using 'solution' as prefix, such that the name turns 'solution_challenge_name'.
 Example: 
 Tower of Hanoi: https://cses.fi/problemset/task/2165/

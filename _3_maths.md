@@ -21,7 +21,7 @@ The conversion between bases is a simple process. To convert a number from base 
 
 ### Binary System in Competitive Programming
 
-The stright forward way of using the binary system modeling a collection of $n$ objects with binary states. In the model, the $i$-th object is represented by the $i$-th bit of a binary number that we call $bmodel$. The state of the object is represented by the value of the bit, $0$ for off and $1$ for on. Then for an object we can check if it is on or off, turn it on or off, or toggle its status as follows:
+The stright forward way of using the binary system is modeling a collection of $n$ objects with binary states. In the model, the $i$-th object is represented by the $i$-th bit of a binary number that we call $bmodel$. The state of the object is represented by the value of the bit, $0$ for off and $1$ for on. Then for an object we can check if it is on or off, turn it on or off, or toggle its status as follows:
 
 1. Check if the $i$-th object is on: $(bmodel)\text{AND}(1<<i)$.
 2. Turn on the $i$-th object: $(bmodel)\text{OR}(1<<i)$.
@@ -41,11 +41,11 @@ The script includes a code using the mentioned model to enumerate all the subset
 
 **Harmonic Numbers**: The $n$-th harmonic number is defined as $H_n=\displaystyle\sum_{i=1}^{n}\dfrac{1}{i}$. Using the lower and upper Darboux sums, we can get some useful inequalities for $H_n$. Remember that Darboux sum are defined as:
 
-$$L_n=\displaystyle\sum_{i=1}^{n-1}\inf_{[x_i, x_{i+1}]}f(x)\cdot \Delta x$$
+$$L_n=\displaystyle\sum_{i=1}^{n-1}\inf_{[x_i, x_{i+1}]}f(x)\cdot \Delta x_i$$
 
-$$U_n=\displaystyle\sum_{i=1}^{n-1}\sup_{[x_i, x_{i+1}]}f(x)\cdot \Delta x$$
+$$U_n=\displaystyle\sum_{i=1}^{n-1}\sup_{[x_i, x_{i+1}]}f(x)\cdot \Delta x_i$$
 
-Consider the function $f(x)=\dfrac{1}{x}$ for $x\in[1,n]$. If we use the partition of $[1,n]$ where $\Delta x=1$, then the Darboux sums for $f$ are given by:
+Consider the function $f(x)=\dfrac{1}{x}$ for $x\in[1,n]$. If we use the partition of $[1,n]$ where $\Delta x_i=1$, then the Darboux sums for $f$ are given by:
 
 $$L_n=\displaystyle\sum_{i=1}^{n-1}\dfrac{1}{i+1}=\dfrac{1}{2}+\dfrac{1}{3}+...+\dfrac{1}{n} = H_n-1$$
 

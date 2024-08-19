@@ -4,7 +4,7 @@ Competitive programming involves developing and utilizing algorithms to solve we
 
 ## Be familiar with
 
-### Be familiar with classic computer science data structure and algorithms
+### Be familiar with classic data structures and algorithms
 
 Data structures provide a systematic way of organizing and managing data, enabling programmers to handle complex problems with more clarity and efficiency, and mastery of algorithms not only accelerates the problem-solving process but also enhances the ability to think algorithmically, leading to solutions that are not just functional but also optimized for speed and resource usage. Also, it is useful to do algorithm analysis to know if the time/space complexity of the developed algorithm passes the time/space limits of the problem, so it is good to be familiarized with asymptotic notation of functions.
 
