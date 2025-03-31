@@ -46,7 +46,7 @@ Given the set of nubers from 1 to n (n<=20), find all the subsets of the set.
 def solution_subsets():
     """
     The number of subsets of a set with n elements is 2**n. In our model, each subset is represented by k in binary form, where 
-    0<=k<2**n. In the binrary form, 0 for the j-th bit means the element j is not in the subset and 1 means the element is in the subset.
+    0<=k<2**n. In the binary form, 0 for the j-th bit means the element j is not in the subset and 1 means the element is in the subset.
     """
     n = int(input())
     print("Subset 1:")
