@@ -46,7 +46,7 @@ sum_n_numbers_using_for            0.00306    0.00294    0.00606    0.00268
 sum_n_numbers_using_sum_builtin    0.00080    0.00076    0.00137    0.00071
 ```
 
-This comparison clearly shows that Python's built-in `sum` method is at least three times faster than a manually coded `for` loop for summing elements in an iterable. Such examples underscore the importance of using Python's built-in capabilities for more efficient programming. The module **introduction.py** briefly describes the data structures and algorithms included as standard programming. From here onward, each *.md* file will have an associated a *.py* script implementing the methods described, we'll refer to this script as **the script**.
+This comparison clearly shows that Python's built-in `sum` method is at least three times faster than a manually coded `for` loop for summing elements in an iterable. Such examples underscore the importance of using Python's built-in capabilities for more efficient programming. The module **introduction.py** briefly describes the data structures and algorithms included as standard programming. From here onward, each *.md* file will have an associated *.py* script implementing the methods described, we'll refer to this script as **the script**.
 
 ## PyPy as a faster option
 
