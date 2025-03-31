@@ -13,36 +13,37 @@ when solving a problem with input an array A of n elements:
 
 def quick_sort(arr):
     """
-    1- Dividing:Given a pivot, we partition the array in two sides such that l<=arr[p] for l in arr[:p+1] 
-       and r>arr[p] for r in arr[p+1:].
-    2- Conquering: For the new subarrays, we apply recursively the same original routine.
-    3- Combining: This step is not necessary (Why?)
+    Quick Sort algorithm using divide and conquer.
+    1- Divide: Select a pivot and partition the array so that elements <= pivot are on the left,
+       and elements > pivot are on the right.
+    2- Conquer: Recursively apply the same strategy to the subarrays.
+    3- Combine: Not needed, because sorting is done in-place.
     """
     
     def partition(a, left, right):
         """
-        Main step, for us i-left is the numbers of elements such that e<=pivot,
-        and the difference j-i is the numbers of elements that e>pivot.
+        Partition the array by selecting a random pivot.
+        Places all elements <= pivot to the left, and > pivot to the right.
         """
         pivot_index = randint(left, right)
         a[pivot_index], a[right] = a[right], a[pivot_index]
         pivot = a[right]
-        i = left-1
-        for j in range(left,right):
+        i = left - 1
+        for j in range(left, right):
             if a[j] <= pivot:
-                i = i+1
+                i += 1
                 a[i], a[j] = a[j], a[i]
-        a[i+1], a[right] = a[right], a[i+1] # Setting the pivot in the right position
-        return i+1 # The index of the partition boundary 
+        a[i + 1], a[right] = a[right], a[i + 1]
+        return i + 1
     
     def perform_quick_sort(a, left, right):
-        if left >= right: return
-
-        p = partition(a, left, right)
-        perform_quick_sort(a, left, p)
-        perform_quick_sort(a,p+1, right)
+        if left < right:
+            p = partition(a, left, right)
+            perform_quick_sort(a, left, p - 1)
+            perform_quick_sort(a, p + 1, right)
     
-    perform_quick_sort(arr,0,len(arr)-1)
+    perform_quick_sort(arr, 0, len(arr) - 1)
+    return arr
 
 
 # Another Divide-Conquer classic sample
